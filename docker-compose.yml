@@ -1,0 +1,30 @@
+version: '2'
+services:
+  mariadb:
+    image: 'bitnami/mariadb:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - 'db:/bitnami'
+  moodle:
+    image: 'bitnami/moodle:latest'
+    labels:
+      kompose.service.type: nodeport
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - 'data:/bitnami'
+    depends_on:
+      - mariadb
+    environment:
+      - MOODLE_SITENAME=SYMU
+      - MOODLE_USERNAME=admin
+      - MOODLE_PASSWORD=password
+      - MOODLE_EMAIL=noreply@symantec.com
+
+volumes:
+  data:
+    driver: local
+  db:
+    driver: local

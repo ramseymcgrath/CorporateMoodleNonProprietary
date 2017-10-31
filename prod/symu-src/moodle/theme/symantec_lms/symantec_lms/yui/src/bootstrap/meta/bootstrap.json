@@ -1,0 +1,8 @@
+{
+  "moodle-theme_symantec_lms-bootstrap": {
+    "requires": [
+        "node",
+        "selector-css3"
+    ]
+  }
+}

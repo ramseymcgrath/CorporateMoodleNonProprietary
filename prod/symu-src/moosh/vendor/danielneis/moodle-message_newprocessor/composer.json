@@ -1,0 +1,12 @@
+{
+    "name": "danielneis/moodle-message_newprocessor",
+    "description": "A template for Moodle message outputs (processors) plugins",
+    "type": "moodle-message",
+    "license": "GPL-3.0",
+    "require": {
+        "composer/installers": "~1.0"
+    },
+    "extra": {
+        "installer-name": "newprocessor"
+    }
+}

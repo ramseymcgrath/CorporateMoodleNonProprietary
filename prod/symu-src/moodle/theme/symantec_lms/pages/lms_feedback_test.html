@@ -1,0 +1,53 @@
+MODAL TO CREATE ISSUE IN JIRA FOR SYMU FEEDBACK (JS)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<title>JIRA JSON ISSUE Submit</title>
+<head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+
+JIRAFeedbackSubmit = function(summary, description, user_name) {
+
+	var ticketDescription = "User: "+user_name+ " Comment: "+description;
+
+    var postData =
+                {
+                    "summary":summary,
+                    "description":ticketDescription
+                }
+    var dataString = JSON.stringify(postData);
+
+    console.log(dataString)
+
+    $.ajax({
+            type: "POST",
+            url: "createIssue.php",
+            data: dataString,
+            contentType: "application/json; charset=utf-8",
+            success: function(data){
+            	if(data.indexOf("id") > -1){
+            		console.log("Worked");
+            		alert('Feedback Posted');
+            	}
+            	else {alert('Failure');}
+            },
+            error: function(e){
+            	alert('Failure');
+                console.log(e.message);
+            }
+    });
+
+};
+
+</script>
+</head>
+<body>
+
+<h1>JIRA LMS Feedback Test</h1>
+
+<div id="resultDivContainer"></div>
+
+<button type="button" onclick="JIRAFeedbackSubmit('DEMO with/ PHP UAT', 'Your code works!', 'Mr. User')">TEST!</button>
+
+</body>
+</html>

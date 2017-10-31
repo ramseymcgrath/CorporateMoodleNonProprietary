@@ -1,0 +1,15 @@
+{
+  "name": "moodle-theme_symantec_lms-bootstrap",
+  "builds": {
+    "moodle-theme_symantec_lms-bootstrap": {
+      "prependfiles": [
+        "bootstrapengine.js",
+        "bootstrapcollapse.js",
+        "bootstrapdropdown.js"
+      ],
+      "jsfiles": [
+        "bootstrap.js"
+      ]
+    }
+  }
+}
